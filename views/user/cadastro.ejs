@@ -1,0 +1,49 @@
+<%- include("./../inc/head") -%>
+
+	<body>
+		<%- include("./../inc/header") -%>
+
+		<%- include("./../inc/navbar") -%>
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<form action="/cadastro" method="POST" class="form-signin">
+						<% if(hasErrors && messages !== undefined) { %>
+							<div class="alert alert-danger">
+								<% messages.forEach(function(message){ %>
+									<p><%=message%></p>
+								<% }) %>
+							</div>
+						<% } %>
+					  <!--<img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+					  <h1 class="h3 mb-3 font-weight-normal">Efetuar cadastro</h1>
+					  <label for="inputName" class="sr-only">Email</label>
+					  <input name="nome" type="text" id="inputName" class="form-control" placeholder="Nome completo" required="" autofocus="">
+					  <label for="inputEmail" class="sr-only">Email</label>
+					  <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required="">
+					  <label for="inputPassword" class="sr-only">Senha</label>
+					  <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+					  <!-- <label for="inputPassword" class="sr-only">Confirme a senha</label>
+					  <input name="senha2" type="password" id="inputPasswordConfirm" class="form-control" placeholder="Confirme a senha" required=""> -->
+					  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					  <!--<div class="checkbox mb-3">
+						<label>
+						  <input type="checkbox" value="remember-me"> Remember me
+						</label>
+					  </div>-->
+					  <button style="background: #D10024;" class="btn btn-lg btn-primary btn-block" type="submit" onclick="return validarSenha()">Cadastrar</button>
+					</form>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<%- include("./../inc/newsletter") -%>
+
+		<%- include("./../inc/footer") -%>
